@@ -1,0 +1,48 @@
+.feedback {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+
+  padding: 8px;
+  border-radius: 5px;
+  // width: 79%;
+  background-color: var(--success);
+  > div {
+    padding: 6px 10px 6px 10px;
+    border-radius: 5px;
+  }
+
+  i {
+    color: var(--secondary);
+  }
+
+  span {
+    color: var(--secondary);
+    font-size: 14px;
+  }
+
+  &.warning {
+    background-color: var(--primary);
+    i {
+      color: var(--darker);
+    }
+    span {
+      color: var(--darker);
+    }
+  }
+
+  &.error {
+    background-color: red;
+  }
+}
+
+:host-context(.warning) .feedback {
+  color: var(--darker);
+  background-color: var(--primary);
+}
+
+:host-context(.error) .feedback {
+  color: var(--darker);
+  background-color: red;
+}

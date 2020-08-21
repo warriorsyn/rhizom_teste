@@ -1,0 +1,72 @@
+<section class="container">
+  <header>
+    <h3>Cadastro de clientes</h3>
+
+    <hr class="side-separator" />
+  </header>
+
+  <div class="content">
+    <!-- <small>Nenhum período disponível.</small> -->
+    <!-- <div *ngIf="periodoSalvo" class="feedback-container"> -->
+    <!-- <app-feedback
+        message="Novo período adicionado com sucesso!"
+      ></app-feedback>
+    </div>
+    <div *ngIf="updateSalvo" class="feedback-container">
+      <app-feedback message="Período atualizado com sucesso!"></app-feedback>
+    </div> -->
+    <div class="table">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Nascimento</th>
+            <th>Endereço</th>
+            <th>Marca e Modelo do Veículo</th>
+
+            <th style="width: 10%; margin-right: 16px;" class="text-right">
+              Ações
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let periodo of periodos.items">
+            <td class="table-row">
+              <span>{{ periodo.nome }}</span>
+            </td>
+            <td class="table-row">
+              <span>{{ periodo.inicio }}</span>
+            </td>
+            <td class="table-row">
+              <span>{{ periodo.fim }}</span>
+            </td>
+
+            <td class="td-actions text-right">
+              <a
+                rel="tooltip"
+                title="Edit Profile"
+                class="btn btn-success btn-simple btn-xs"
+              >
+                <i class="fa fa-edit"></i>
+              </a>
+              <a
+                style="cursor: pointer;"
+                rel="tooltip"
+                title="Remove"
+                class="btn btn-danger btn-simple btn-xs"
+              >
+                <i class="fas fa-trash-alt"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="buttons-container">
+      <app-button>Adicionar novo</app-button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+<div class="feedback" *ngIf="type === 'success'">
+  <div *ngIf="data">
+    <span>
+      {{ moment(data).format("DD/MM/YYYY") }} às
+      {{ moment(data).format("HH:mm") }} - {{ message }}</span
+    >
+  </div>
+
+  <div *ngIf="!data">
+    <i style="margin-right: 10px;" class="fal fa-check-circle"></i>
+    <span>
+      {{ message }}
+    </span>
+  </div>
+</div>
+
+<div class="feedback warning" *ngIf="type === 'warning'">
+  <div *ngIf="data">
+    <span>
+      {{ moment(data).format("DD/MM/YYYY") }} às
+      {{ moment(data).format("HH:mm") }} - {{ message }}</span
+    >
+  </div>
+
+  <div *ngIf="!data">
+    <i style="margin-right: 10px;" class="far fa-exclamation-circle"></i>
+    <span>
+      {{ message }}
+    </span>
+  </div>
+</div>
+
+<div class="feedback error" *ngIf="type === 'error'">
+  <div *ngIf="data">
+    <span>
+      {{ moment(data).format("DD/MM/YYYY") }} às
+      {{ moment(data).format("HH:mm") }} - {{ message }}</span
+    >
+  </div>
+
+  <div *ngIf="!data">
+    <i style="margin-right: 10px;" class="fal fa-times-circle"></i>
+    <span>
+      {{ message }}
+    </span>
+  </div>
+</div>
