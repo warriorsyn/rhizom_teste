@@ -1,0 +1,20 @@
+// default colors
+.theme-wrapper {
+  --primary: #fcb040;
+  --primary-light: #fcc454;
+  --secondary: #ffffff;
+  --success: #00aa00;
+  --success-light: #9dd29c;
+  --darker: #383838;
+  --toolbar: #fff;
+}
+// pass variables into a sass map
+$variables: (
+  --primary: var(--primary),
+  --primary-light: var(--primary-light),
+  --secondary: var(--secondary),
+  --success: var(--success),
+  --success-light: var(--success-light),
+  --darker: var(--darker),
+  --toolbar: var(--toolbar),
+);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetAllCarbrandUsecase } from 'src/app/core/usecases/get-all-carbrand.usecase';
 
 @Component({
   selector: 'app-client-list',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client-list.component.scss'],
 })
 export class ClientListComponent implements OnInit {
-  periodos: { items: [] };
-  constructor() {}
+  periodos: { items: [] } = { items: [] };
+  constructor(private getAllCarbrandUsecase: GetAllCarbrandUsecase) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllCarbrandUsecase.execute(null).subscribe((val) => {});
+  }
 }

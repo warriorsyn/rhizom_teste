@@ -1,9 +1,5 @@
 <section class="container">
-  <header>
-    <h3>Cadastro de clientes</h3>
-
-    <hr class="side-separator" />
-  </header>
+  <app-header title="Cadastro de clientes"></app-header>
 
   <div class="content">
     <!-- <small>Nenhum período disponível.</small> -->
@@ -66,7 +62,7 @@
     </div>
 
     <div class="buttons-container">
-      <app-button>Adicionar novo</app-button>
+      <app-button [routerLink]="['cadastro']">Adicionar novo</app-button>
     </div>
   </div>
 </section>
