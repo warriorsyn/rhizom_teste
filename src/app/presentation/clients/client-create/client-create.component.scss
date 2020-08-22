@@ -8,6 +8,50 @@
     display: flex;
     flex-direction: column;
 
+    // form {
+    //   // background: blue;
+    //   display: flex;
+    //   flex-direction: column;
+    //   flex-wrap: wrap;
+    //   padding: 15px 60px 15px 60px;
+    //   .first-row {
+    //     display: flex;
+    //     justify-content: space-between;
+    //     flex-wrap: wrap;
+    //     // background: blue;
+    //   }
+
+    //   // .second-row {
+    //   //   display: flex;
+    //   //   justify-content: space-evenly;
+    //   //   padding-right: 12rem;
+    //   //   padding-left: 12rem;
+    //   //   margin-top: 1vh;
+    //   // }
+
+    //   .input-container {
+    //     display: flex;
+    //     flex-direction: column;
+    //     label {
+    //       margin-bottom: 2px;
+    //       margin-left: 3px;
+    //     }
+    //   }
+
+    //   input {
+    //     height: 45px;
+    //     width: 25vw;
+    //     border: 1px solid #f2f2f2;
+    //     margin-bottom: 10px;
+    //     background: #ffffff;
+    //     box-shadow: 0px 2.95291px 9px rgba(233, 233, 234, 0.1);
+    //     border-radius: 2px;
+    //     outline: 0;
+    //     &::placeholder {
+    //       padding: 10px;
+    //     }
+    //   }
+    // }
     .buttons-container {
       display: flex;
       justify-content: flex-end;
