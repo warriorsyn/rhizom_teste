@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AddClientUsecase } from 'src/app/core/usecases/client/add-client.usecase';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-create',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client-create.component.scss'],
 })
 export class ClientCreateComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private addClientUsecase: AddClientUsecase,
+    private router: Router
+  ) {}
 
   create(data) {
-    console.log(data);
+    this.addClientUsecase.execute(data).subscribe(() => {
+      this.router.navigate(['cliente']);
+    });
+    // console.log(data);
   }
 
   ngOnInit(): void {}

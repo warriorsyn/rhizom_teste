@@ -11,7 +11,12 @@
       <app-button [routerLink]="['..']" class="secondary"
         >Voltar para a lista</app-button
       >
-      <app-button (click)="create(clientForm.clientForm.value)"
+      <app-button
+        (click)="
+          clientForm.clientForm.valid
+            ? create(clientForm.clientForm.value)
+            : false
+        "
         >Adicionar</app-button
       >
     </div>
