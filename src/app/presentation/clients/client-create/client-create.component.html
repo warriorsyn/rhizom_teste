@@ -2,13 +2,18 @@
   <app-header title="Cadastrar cliente"></app-header>
 
   <div class="content">
-    <app-client-form></app-client-form>
+    <app-client-form
+      #clientForm
+      (emitFormData)="create($event)"
+    ></app-client-form>
 
     <div class="buttons-container">
       <app-button [routerLink]="['..']" class="secondary"
         >Voltar para a lista</app-button
       >
-      <app-button>Adicionar</app-button>
+      <app-button (click)="create(clientForm.clientForm.value)"
+        >Adicionar</app-button
+      >
     </div>
   </div>
 </section>

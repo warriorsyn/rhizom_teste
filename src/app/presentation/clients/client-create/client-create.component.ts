@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-client-create',
   templateUrl: './client-create.component.html',
-  styleUrls: ['./client-create.component.scss']
+  styleUrls: ['./client-create.component.scss'],
 })
 export class ClientCreateComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  create(data) {
+    console.log(data);
   }
 
+  ngOnInit(): void {}
 }

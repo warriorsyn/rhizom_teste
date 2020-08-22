@@ -1,39 +1,68 @@
-<form>
+<form [formGroup]="clientForm" (submit)="emitSubmit(clientForm.value)">
   <div class="first-row">
     <div class="input-container">
       <label for="">Nome</label>
-      <input type="text" placeholder="Informe seu nome" />
+      <input
+        formControlName="name"
+        type="text"
+        placeholder="Informe seu nome"
+      />
     </div>
     <div class="input-container">
       <label for="">CPF</label>
-      <input type="text" placeholder="informe seu cpf" />
+      <input type="text" formControlName="cpf" placeholder="informe seu cpf" />
     </div>
     <div class="input-container">
       <label for="">Telefone</label>
-      <input type="text" placeholder="informe seu telefone" />
+      <input
+        formControlName="phone"
+        type="text"
+        placeholder="informe seu telefone"
+      />
     </div>
     <div class="input-container">
       <label for="">Data de nascimento</label>
-      <input type="date" placeholder="Data de nascimento" />
+      <input
+        formControlName="birth"
+        type="date"
+        placeholder="Data de nascimento"
+      />
     </div>
     <div class="input-container">
       <label for="">CEP</label>
-      <input type="text" placeholder="informe seu cep" />
+      <input formControlName="cep" type="text" placeholder="informe seu cep" />
     </div>
 
     <div class="input-container">
       <label for="">Endereço</label>
-      <input type="text" placeholder="Informe seu endereço" />
+      <input
+        formControlName="address"
+        type="text"
+        placeholder="Informe seu endereço"
+      />
+    </div>
+
+    <div class="input-container">
+      <label for="">Marca</label>
+      <select formControlName="brand">
+        <option>
+          Selecao
+        </option>
+      </select>
+    </div>
+    <div class="input-container">
+      <label for="">Modelo</label>
+      <select formControlName="model">
+        <option>
+          Selecao
+        </option>
+      </select>
+    </div>
+    <div style="opacity: 0;" class="input-container">
+      <label for=""></label>
+      <select> </select>
     </div>
   </div>
-  <!-- <div class="second-row">
-    <div class="input-container">
-      <label for="">Data de nascimento</label>
-      <input type="date" placeholder="Data de nascimento" />
-    </div>
-    <div class="input-container">
-      <label for="">Endereço</label>
-      <input type="text" placeholder="Informe seu endereço" />
-    </div>
-  </div> -->
+
+  <button [hidden]="true" type="submit"></button>
 </form>
