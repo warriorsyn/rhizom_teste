@@ -14,9 +14,8 @@ export class ClientCreateComponent implements OnInit {
   ) {}
 
   create(data) {
-    this.addClientUsecase.execute(data).subscribe(() => {
-      this.router.navigate(['cliente']);
-    });
+    this.addClientUsecase.execute(data).subscribe(() => {});
+    this.router.navigate(['cliente']);
     // console.log(data);
   }
 

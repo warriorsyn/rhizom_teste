@@ -44,8 +44,9 @@ form {
     box-shadow: 0px 2.95291px 9px rgba(233, 233, 234, 0.1);
     border-radius: 2px;
     outline: 0;
-    &::placeholder {
-      padding: 10px;
-    }
+    padding: 10px;
+    // &::placeholder {
+    //   padding: 10px;
+    // }
   }
 }

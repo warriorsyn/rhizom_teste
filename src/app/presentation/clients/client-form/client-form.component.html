@@ -10,11 +10,17 @@
     </div>
     <div class="input-container">
       <label for="">CPF</label>
-      <input type="text" formControlName="cpf" placeholder="informe seu cpf" />
+      <input
+        [textMask]="{ mask: cpfMask }"
+        type="text"
+        formControlName="cpf"
+        placeholder="informe seu cpf"
+      />
     </div>
     <div class="input-container">
       <label for="">Telefone</label>
       <input
+        [textMask]="{ mask: telefoneMask }"
         formControlName="phone"
         type="text"
         placeholder="informe seu telefone"
@@ -30,7 +36,12 @@
     </div>
     <div class="input-container">
       <label for="">CEP</label>
-      <input formControlName="cep" type="text" placeholder="informe seu cep" />
+      <input
+        [textMask]="{ mask: cepMask }"
+        formControlName="cep"
+        type="text"
+        placeholder="informe seu cep"
+      />
     </div>
 
     <div class="input-container">

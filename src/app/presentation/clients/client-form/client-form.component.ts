@@ -11,6 +11,44 @@ export class ClientFormComponent implements OnInit {
 
   clientForm: FormGroup;
 
+  telefoneMask = [
+    '(',
+    /[0-9]/,
+    /\d/,
+    ')',
+    ' ',
+    /\d/,
+    ' ',
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/,
+    '-',
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/,
+  ];
+
+  cpfMask = [
+    /[0-9]/,
+    /\d/,
+    /\d/,
+    '.',
+    /[0-9]/,
+    /\d/,
+    /\d/,
+    '.',
+    /[0-9]/,
+    /\d/,
+    /\d/,
+    '-',
+    /[0-9]/,
+    /\d/,
+  ];
+
+  cepMask = [/[0-9]/, /\d/, /\d/, /\d/, /\d/, '-', /[0-9]/, /\d/, /\d/];
+
   @Output() emitFormData = new EventEmitter();
 
   emitSubmit(data) {
