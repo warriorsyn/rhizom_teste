@@ -28,15 +28,25 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let periodo of periodos.items">
+          <tr *ngFor="let client of clients">
             <td class="table-row">
-              <span>{{ periodo.nome }}</span>
+              <span>{{ client.name }}</span>
             </td>
             <td class="table-row">
-              <span>{{ periodo.inicio }}</span>
+              <span>{{ client.cpf }}</span>
             </td>
             <td class="table-row">
-              <span>{{ periodo.fim }}</span>
+              <span>{{ client.phone }}</span>
+            </td>
+
+            <td class="table-row">
+              <span>{{ client.birth }}</span>
+            </td>
+            <td class="table-row">
+              <span>{{ client.address }}</span>
+            </td>
+            <td class="table-row">
+              <span>{{ client.brandId }}/{{ client.modelId }}</span>
             </td>
 
             <td class="td-actions text-right">
