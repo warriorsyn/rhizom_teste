@@ -7,6 +7,7 @@ import { GetAllCarbrandUsecase } from 'src/app/core/usecases/get-all-carbrand.us
 import { CarBrandModel } from 'src/app/core/domain/carbrand/carbrand.model';
 import { GetCarmodelByCarbrandUsecase } from 'src/app/core/usecases/carmodel/get-carmodel-by-carbrand.usecase';
 import { CarmodelModel } from 'src/app/core/domain/carmodel/carmodel.model';
+import { GetAddressByCepUsecase } from 'src/app/core/usecases/cep/get-address-by-cep.usecase';
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
@@ -16,7 +17,8 @@ export class ClientFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private getAllCarbrandUsecase: GetAllCarbrandUsecase,
-    private getCarmodelByCarbrandUsecase: GetCarmodelByCarbrandUsecase
+    private getCarmodelByCarbrandUsecase: GetCarmodelByCarbrandUsecase,
+    private getAddressByCepUsecase: GetAddressByCepUsecase
   ) {}
 
   clientForm: FormGroup;
@@ -24,6 +26,8 @@ export class ClientFormComponent implements OnInit {
   carBrands: CarBrandModel[] = [];
 
   carModels: CarmodelModel[] = [];
+
+  cepInvalid = false;
 
   telefoneMask = [
     '(',
@@ -87,7 +91,6 @@ export class ClientFormComponent implements OnInit {
 
   getCarBrands() {
     return this.getAllCarbrandUsecase.execute(null).subscribe((brands) => {
-      console.log(brands);
       this.carBrands.push(brands);
     });
   }
@@ -97,6 +100,23 @@ export class ClientFormComponent implements OnInit {
     this.getCarmodelByCarbrandUsecase.execute(id).subscribe((model) => {
       this.carModels.push(model);
     });
+  }
+
+  autocompleteByCep(cep: string) {
+    if (cep.length >= 9) {
+      this.getAddressByCepUsecase.execute(cep).subscribe(
+        (adrs) => {
+          this.cepInvalid = false;
+          this.clientControl('address').patchValue(
+            adrs.logradouro ? adrs.logradouro : adrs.localidade
+          );
+        },
+        (err) => {
+          this.cepInvalid = true;
+        }
+      );
+      return;
+    }
   }
 
   ngOnInit(): void {

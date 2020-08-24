@@ -37,6 +37,7 @@
     <div class="input-container">
       <label for="">CEP</label>
       <input
+        (input)="autocompleteByCep(clientControl('cep').value)"
         [textMask]="{ mask: cepMask }"
         formControlName="cep"
         type="text"
@@ -92,6 +93,13 @@
     [type]="'warning'"
     *ngIf="this.clientControlIsInvalid('cpf')"
     [message]="'Insira um CPF válido!'"
+    class="warning"
+  ></app-feedback>
+
+  <app-feedback
+    [type]="'warning'"
+    *ngIf="cepInvalid"
+    [message]="'Insira um CEP válido!'"
     class="warning"
   ></app-feedback>
   <button [hidden]="true" type="submit"></button>
