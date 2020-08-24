@@ -3,7 +3,7 @@ import { CarBrandRepository } from 'src/app/core/repositories/carbrand/carbrand.
 import { Observable, from } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
-import { map, flatMap } from 'rxjs/operators';
+import { map, flatMap, filter } from 'rxjs/operators';
 
 import { ClientRepository } from 'src/app/core/repositories/client/client.repository';
 import { ClientMockRepositoryMapper } from './client-mock-repository-mapper';
@@ -18,6 +18,7 @@ export class ClientMockRepository extends ClientRepository {
     super();
     if (
       localStorage.getItem('clients') === null ||
+      // tslint:disable-next-line: triple-equals
       localStorage.getItem('clients') == undefined
     ) {
       console.log('No clients Found... Creating...');
@@ -29,6 +30,16 @@ export class ClientMockRepository extends ClientRepository {
     }
   }
   mapper = new ClientMockRepositoryMapper();
+
+  getClientById(id: string): Observable<ClientModel> {
+    const clients: ClientMockEntity[] = JSON.parse(
+      localStorage.getItem('clients')
+    );
+
+    return from(clients)
+      .pipe(filter((client) => client.id === id))
+      .pipe(map(this.mapper.mapFrom));
+  }
 
   deleteClient(id: string): Observable<void> {
     const clients: ClientMockEntity[] = JSON.parse(
