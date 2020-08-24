@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { v4 as uuid } from 'uuid';
 import { CpfValidator } from '../../shared/validators/cpf.validator';
@@ -8,6 +8,7 @@ import { CarBrandModel } from 'src/app/core/domain/carbrand/carbrand.model';
 import { GetCarmodelByCarbrandUsecase } from 'src/app/core/usecases/carmodel/get-carmodel-by-carbrand.usecase';
 import { CarmodelModel } from 'src/app/core/domain/carmodel/carmodel.model';
 import { GetAddressByCepUsecase } from 'src/app/core/usecases/cep/get-address-by-cep.usecase';
+import { ClientModel } from 'src/app/core/domain/client/client.model';
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
@@ -20,6 +21,8 @@ export class ClientFormComponent implements OnInit {
     private getCarmodelByCarbrandUsecase: GetCarmodelByCarbrandUsecase,
     private getAddressByCepUsecase: GetAddressByCepUsecase
   ) {}
+
+  @Input() client: ClientModel;
 
   clientForm: FormGroup;
 
@@ -132,5 +135,19 @@ export class ClientFormComponent implements OnInit {
       brand: [''],
       model: [''],
     });
+
+    if (this.client) {
+      this.clientForm.setValue({
+        id: this.client.id,
+        name: this.client.name,
+        cpf: this.client.cpf,
+        phone: this.client.phone,
+        birth: this.client.birth,
+        cep: [''],
+        address: this.client.address,
+        brand: this.client.brandId,
+        model: this.client.modelId,
+      });
+    }
   }
 }
