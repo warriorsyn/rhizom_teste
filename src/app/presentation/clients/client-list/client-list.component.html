@@ -58,6 +58,7 @@
                 <i class="fa fa-edit"></i>
               </a>
               <a
+                [swal]="deleteSwal"
                 style="cursor: pointer;"
                 rel="tooltip"
                 title="Remove"
@@ -66,6 +67,17 @@
                 <i class="fas fa-trash-alt"></i>
               </a>
             </td>
+            <swal
+              #deleteSwal
+              title="Excluir cliente ?"
+              text="Tem certeza que deseja exluir este cliente?"
+              icon="warning"
+              [cancelButtonText]="['Cancelar']"
+              [showCancelButton]="true"
+              [focusCancel]="true"
+              (confirm)="deleteClient(client.id)"
+            >
+            </swal>
           </tr>
         </tbody>
       </table>

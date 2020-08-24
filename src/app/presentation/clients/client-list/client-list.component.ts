@@ -21,6 +21,9 @@ export class ClientListComponent implements OnInit {
     });
   }
 
+  deleteClient(id: number) {
+    console.log(id);
+  }
   ngOnInit(): void {
     this.getAllClients();
     this.getAllCarbrandUsecase.execute(null).subscribe((val) => {});

@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ClientCreateComponent } from './client-create/client-create.component';
 import { ClientFormComponent } from './client-form/client-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 @NgModule({
   declarations: [
     ClientsComponent,
@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ClientsRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    SweetAlert2Module,
   ],
 })
 export class ClientsModule {}

@@ -10,6 +10,7 @@ import { CarBrandRepository } from './core/repositories/carbrand/carbrand.reposi
 import { CarbrandWebRepository } from './data/carbrand/carbrand-web-repository/carbrand-web.repository';
 import { ClientRepository } from './core/repositories/client/client.repository';
 import { ClientMockRepository } from './data/client/client-mock-repository/client-mock-repository';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,7 @@ import { ClientMockRepository } from './data/client/client-mock-repository/clien
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    SweetAlert2Module.forRoot(),
   ],
   providers: [
     { provide: CarBrandRepository, useClass: CarbrandWebRepository },
