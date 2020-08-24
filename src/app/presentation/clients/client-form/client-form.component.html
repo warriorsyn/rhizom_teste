@@ -59,6 +59,7 @@
         (change)="getCarModels($event.target.value)"
         formControlName="brand"
       >
+        <option value="" disabled selected>Escolha uma marca</option>
         <option [value]="brand.id" *ngFor="let brand of carBrands">
           {{ brand.name }}
         </option>
@@ -67,7 +68,8 @@
     <div class="input-container">
       <label for="">Modelo</label>
       <select formControlName="model">
-        <option *ngFor="let model of carModels">
+        <option value="" disabled selected>Escolha um modelo</option>
+        <option [value]="model.id" *ngFor="let model of carModels">
           {{ model.name }}
         </option>
       </select>
