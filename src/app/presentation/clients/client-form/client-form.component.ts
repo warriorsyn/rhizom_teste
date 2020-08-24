@@ -5,6 +5,8 @@ import { CpfValidator } from '../../shared/validators/cpf.validator';
 import { ClientMockEntity } from 'src/app/data/client/client-mock-repository/client-mock-entity';
 import { GetAllCarbrandUsecase } from 'src/app/core/usecases/get-all-carbrand.usecase';
 import { CarBrandModel } from 'src/app/core/domain/carbrand/carbrand.model';
+import { GetCarmodelByCarbrandUsecase } from 'src/app/core/usecases/carmodel/get-carmodel-by-carbrand.usecase';
+import { CarmodelModel } from 'src/app/core/domain/carmodel/carmodel.model';
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
@@ -13,12 +15,15 @@ import { CarBrandModel } from 'src/app/core/domain/carbrand/carbrand.model';
 export class ClientFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
-    private getAllCarbrandUsecase: GetAllCarbrandUsecase
+    private getAllCarbrandUsecase: GetAllCarbrandUsecase,
+    private getCarmodelByCarbrandUsecase: GetCarmodelByCarbrandUsecase
   ) {}
 
   clientForm: FormGroup;
 
   carBrands: CarBrandModel[] = [];
+
+  carModels: CarmodelModel[] = [];
 
   telefoneMask = [
     '(',
@@ -87,7 +92,12 @@ export class ClientFormComponent implements OnInit {
     });
   }
 
-  getCarModels(id: string) {}
+  getCarModels(id: string) {
+    this.carModels = [];
+    this.getCarmodelByCarbrandUsecase.execute(id).subscribe((model) => {
+      this.carModels.push(model);
+    });
+  }
 
   ngOnInit(): void {
     this.getCarBrands();
