@@ -1,4 +1,4 @@
-<form [formGroup]="clientForm" (submit)="emitSubmit(clientForm.value)">
+<form [formGroup]="clientForm" (submit)="emitSubmit(form.value)">
   <div class="first-row">
     <div class="input-container">
       <label for="">Nome</label>
@@ -77,12 +77,14 @@
   </div>
 
   <app-feedback
+    [type]="'warning'"
     *ngIf="clientForm.invalid && clientForm.touched"
     [message]="'Campos são obrigatórios'"
     class="warning"
   ></app-feedback>
 
   <app-feedback
+    [type]="'warning'"
     *ngIf="this.clientControlIsInvalid('cpf')"
     [message]="'Insira um CPF válido!'"
     class="warning"

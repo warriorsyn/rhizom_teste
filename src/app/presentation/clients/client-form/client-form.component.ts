@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { v4 as uuid } from 'uuid';
 import { CpfValidator } from '../../shared/validators/cpf.validator';
+import { ClientMockEntity } from 'src/app/data/client/client-mock-repository/client-mock-entity';
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
@@ -52,7 +53,11 @@ export class ClientFormComponent implements OnInit {
 
   @Output() emitFormData = new EventEmitter();
 
-  emitSubmit(data) {
+  get form() {
+    return this.clientForm;
+  }
+
+  emitSubmit(data: ClientMockEntity) {
     if (this.clientForm.valid) {
       this.emitFormData.emit(data);
       return;

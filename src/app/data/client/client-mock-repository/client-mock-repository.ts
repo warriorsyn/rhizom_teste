@@ -20,7 +20,7 @@ export class ClientMockRepository extends ClientRepository {
       localStorage.getItem('clients') === null ||
       localStorage.getItem('clients') == undefined
     ) {
-      console.log('No Todos Found... Creating...');
+      console.log('No clients Found... Creating...');
 
       localStorage.setItem('clients', JSON.stringify([]));
       return;
@@ -51,8 +51,11 @@ export class ClientMockRepository extends ClientRepository {
 
     return from(clients).pipe(map(this.mapper.mapFrom));
   }
-  addClient(param: ClientModel): Observable<void> {
-    const clients: ClientModel[] = JSON.parse(localStorage.getItem('clients'));
+
+  addClient(param: ClientMockEntity): Observable<void> {
+    const clients: ClientMockEntity[] = JSON.parse(
+      localStorage.getItem('clients')
+    );
 
     clients.push(param);
     localStorage.setItem('clients', JSON.stringify(clients));

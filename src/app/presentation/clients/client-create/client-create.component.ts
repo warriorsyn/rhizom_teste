@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AddClientUsecase } from 'src/app/core/usecases/client/add-client.usecase';
 import { Router } from '@angular/router';
+import { ClientMockEntity } from 'src/app/data/client/client-mock-repository/client-mock-entity';
 
 @Component({
   selector: 'app-client-create',
@@ -13,7 +14,7 @@ export class ClientCreateComponent implements OnInit {
     private router: Router
   ) {}
 
-  create(data) {
+  create(data: ClientMockEntity) {
     this.addClientUsecase.execute(data).subscribe(() => {});
     this.router.navigate(['cliente']);
     // console.log(data);
