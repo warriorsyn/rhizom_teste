@@ -56,8 +56,8 @@
     <div class="input-container">
       <label for="">Marca</label>
       <select formControlName="brand">
-        <option>
-          Selecao
+        <option [value]="brand.id" *ngFor="let brand of carBrands">
+          {{ brand.name }}
         </option>
       </select>
     </div>

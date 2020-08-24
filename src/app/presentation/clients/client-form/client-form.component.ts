@@ -3,15 +3,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { v4 as uuid } from 'uuid';
 import { CpfValidator } from '../../shared/validators/cpf.validator';
 import { ClientMockEntity } from 'src/app/data/client/client-mock-repository/client-mock-entity';
+import { GetAllCarbrandUsecase } from 'src/app/core/usecases/get-all-carbrand.usecase';
+import { CarBrandModel } from 'src/app/core/domain/carbrand/carbrand.model';
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
   styleUrls: ['./client-form.component.scss'],
 })
 export class ClientFormComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private getAllCarbrandUsecase: GetAllCarbrandUsecase
+  ) {}
 
   clientForm: FormGroup;
+
+  carBrands: CarBrandModel[] = [];
 
   telefoneMask = [
     '(',
@@ -73,7 +80,17 @@ export class ClientFormComponent implements OnInit {
     return control.invalid && (control.touched || control.dirty);
   }
 
+  getCarBrands() {
+    return this.getAllCarbrandUsecase.execute(null).subscribe((brands) => {
+      console.log(brands);
+      this.carBrands.push(brands);
+    });
+  }
+
+  getCarModels(id: string) {}
+
   ngOnInit(): void {
+    this.getCarBrands();
     this.clientForm = this.fb.group({
       id: [uuid()],
       name: ['', [Validators.required]],
