@@ -81,5 +81,11 @@
     [message]="'Campos são obrigatórios'"
     class="warning"
   ></app-feedback>
+
+  <app-feedback
+    *ngIf="this.clientControlIsInvalid('cpf')"
+    [message]="'Insira um CPF válido!'"
+    class="warning"
+  ></app-feedback>
   <button [hidden]="true" type="submit"></button>
 </form>
