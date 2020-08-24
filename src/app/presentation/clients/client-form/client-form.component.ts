@@ -98,9 +98,9 @@ export class ClientFormComponent implements OnInit {
     });
   }
 
-  getCarModels(id: string) {
+  getCarModels(idBrand: string) {
     this.carModels = [];
-    this.getCarmodelByCarbrandUsecase.execute(id).subscribe((model) => {
+    this.getCarmodelByCarbrandUsecase.execute(idBrand).subscribe((model) => {
       this.carModels.push(model);
     });
   }
@@ -137,13 +137,14 @@ export class ClientFormComponent implements OnInit {
     });
 
     if (this.client) {
+      this.getCarModels(this.client.brandId);
       this.clientForm.setValue({
         id: this.client.id,
         name: this.client.name,
         cpf: this.client.cpf,
         phone: this.client.phone,
         birth: this.client.birth,
-        cep: [''],
+        cep: '',
         address: this.client.address,
         brand: this.client.brandId,
         model: this.client.modelId,

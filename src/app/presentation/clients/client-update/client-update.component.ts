@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GetClientByIdUsecase } from 'src/app/core/usecases/client/get-client-by-id.usecase';
+import { ClientModel } from 'src/app/core/domain/client/client.model';
+import { ClientMockEntity } from 'src/app/data/client/client-mock-repository/client-mock-entity';
 
 @Component({
   selector: 'app-client-update',
@@ -13,11 +15,18 @@ export class ClientUpdateComponent implements OnInit {
     private getClientByIdUsecase: GetClientByIdUsecase
   ) {}
 
+  client: ClientModel;
+
+  update(data: ClientMockEntity) {
+    console.log(data);
+    // Atualiza dados do cliente
+  }
   getClientById() {
+    //  Retorna cliente pelo id
     this.activatedRoute.paramMap.subscribe((param) => {
       console.log(param.get('id'));
       this.getClientByIdUsecase.execute(param.get('id')).subscribe((client) => {
-        console.log(client);
+        this.client = client;
       });
     });
   }

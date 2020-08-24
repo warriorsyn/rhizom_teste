@@ -2,13 +2,24 @@
   <app-header title="Atualizar cliente"></app-header>
 
   <div class="content">
-    <app-client-form #clientForm></app-client-form>
+    <app-client-form
+      [client]="client"
+      (emitFormData)="update($event)"
+      #clientForm
+    ></app-client-form>
 
     <div class="buttons-container">
       <app-button [routerLink]="['../..']" class="secondary"
         >Voltar para a lista</app-button
       >
-      <app-button>Atualizar</app-button>
+      <app-button
+        (click)="
+          clientForm.clientForm.valid
+            ? update(clientForm.clientForm.value)
+            : false
+        "
+        >Atualizar</app-button
+      >
     </div>
   </div>
 </section>
