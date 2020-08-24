@@ -30,6 +30,20 @@ export class ClientMockRepository extends ClientRepository {
   }
   mapper = new ClientMockRepositoryMapper();
 
+  deleteClient(id: string): Observable<void> {
+    const clients: ClientMockEntity[] = JSON.parse(
+      localStorage.getItem('clients')
+    );
+
+    const find = clients.indexOf(clients.find((val) => val.id === id));
+
+    clients.splice(find, 1);
+
+    localStorage.setItem('clients', JSON.stringify(clients));
+
+    return from([]);
+  }
+
   getClients(param: void): Observable<ClientModel> {
     const clients: ClientMockEntity[] = JSON.parse(
       localStorage.getItem('clients')
