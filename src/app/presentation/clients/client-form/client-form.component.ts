@@ -114,7 +114,7 @@ export class ClientFormComponent implements OnInit {
             adrs.logradouro ? adrs.logradouro : adrs.localidade
           );
         },
-        (err) => {
+        () => {
           this.cepInvalid = true;
         }
       );

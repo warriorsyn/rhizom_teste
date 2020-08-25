@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CarBrandRepository } from 'src/app/core/repositories/carbrand/carbrand.repository';
-import { Observable, from } from 'rxjs';
+import { Observable, from, observable } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 import { map, flatMap, filter } from 'rxjs/operators';
@@ -14,7 +14,7 @@ import { ClientMockEntity } from './client-mock-entity';
   providedIn: 'root',
 })
 export class ClientMockRepository extends ClientRepository {
-  constructor(private http: HttpClient) {
+  constructor() {
     super();
     if (
       localStorage.getItem('clients') === null ||
@@ -30,6 +30,22 @@ export class ClientMockRepository extends ClientRepository {
     }
   }
   mapper = new ClientMockRepositoryMapper();
+
+  updateClient(param: ClientMockEntity): Observable<void> {
+    const clients: ClientMockEntity[] = JSON.parse(
+      localStorage.getItem('clients')
+    );
+
+    for (let i = 0; i < clients.length; i++) {
+      if (clients[i].id === param.id) {
+        clients[i] = param;
+      }
+    }
+
+    localStorage.setItem('clients', JSON.stringify(clients));
+
+    return new Observable();
+  }
 
   getClientById(id: string): Observable<ClientModel> {
     const clients: ClientMockEntity[] = JSON.parse(
