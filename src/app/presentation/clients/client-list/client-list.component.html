@@ -40,7 +40,7 @@
             </td>
 
             <td class="table-row">
-              <span>{{ client.birth }}</span>
+              <span>{{ moment(client.birth).format("DD/MM/YYYY") }}</span>
             </td>
             <td class="table-row">
               <span>{{ client.address }}</span>

@@ -3,6 +3,7 @@ import { GetAllCarbrandUsecase } from 'src/app/core/usecases/get-all-carbrand.us
 import { GetAllClientsUsecase } from 'src/app/core/usecases/client/get-all-clients.usecase';
 import { ClientModel } from 'src/app/core/domain/client/client.model';
 import { DeleteClientUsecase } from 'src/app/core/usecases/client/delete-client.usecase';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-client-list',
@@ -11,6 +12,7 @@ import { DeleteClientUsecase } from 'src/app/core/usecases/client/delete-client.
 })
 export class ClientListComponent implements OnInit {
   clients: ClientModel[] = [];
+  moment = moment;
   constructor(
     private getAllCarbrandUsecase: GetAllCarbrandUsecase,
     private getAllClientsUsecase: GetAllClientsUsecase,
