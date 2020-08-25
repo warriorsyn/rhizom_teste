@@ -57,7 +57,7 @@
     <div class="input-container">
       <label for="">Marca</label>
       <select
-        (change)="getCarModels($event.target.value)"
+        (change)="getCarModels()"
         formControlName="brand"
         [compareWith]="compareById"
       >
