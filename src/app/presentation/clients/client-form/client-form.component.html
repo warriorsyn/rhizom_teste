@@ -59,18 +59,19 @@
       <select
         (change)="getCarModels($event.target.value)"
         formControlName="brand"
+        [compareWith]="compareById"
       >
         <option value="" disabled selected>Escolha uma marca</option>
-        <option [value]="brand.id" *ngFor="let brand of carBrands">
+        <option [ngValue]="brand" *ngFor="let brand of carBrands">
           {{ brand.name }}
         </option>
       </select>
     </div>
     <div class="input-container">
       <label for="">Modelo</label>
-      <select formControlName="model">
+      <select [compareWith]="compareById" formControlName="model">
         <option value="" disabled selected>Escolha um modelo</option>
-        <option [value]="model.id" *ngFor="let model of carModels">
+        <option [ngValue]="model" *ngFor="let model of carModels">
           {{ model.name }}
         </option>
       </select>

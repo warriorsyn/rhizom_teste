@@ -14,8 +14,8 @@ export class ClientMockRepositoryMapper extends Mapper<
       birth: param.birth,
       cpf: param.cpf,
       phone: param.phone,
-      brandId: param.brand,
-      modelId: param.model,
+      brand: param.brand,
+      model: param.model,
     };
   }
   mapTo(param: ClientModel): ClientMockEntity {
@@ -26,8 +26,8 @@ export class ClientMockRepositoryMapper extends Mapper<
       birth: param.birth,
       cpf: param.cpf,
       phone: param.phone,
-      brand: param.brandId,
-      model: param.modelId,
+      brand: param.brand,
+      model: param.model,
     };
   }
 }

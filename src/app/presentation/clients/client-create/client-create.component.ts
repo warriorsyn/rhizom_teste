@@ -15,9 +15,9 @@ export class ClientCreateComponent implements OnInit {
   ) {}
 
   create(data: ClientMockEntity) {
-    this.addClientUsecase.execute(data).subscribe(() => {});
+    // Cadastra um novo cliente
+    this.addClientUsecase.execute(data);
     this.router.navigate(['cliente']);
-    // console.log(data);
   }
 
   ngOnInit(): void {}

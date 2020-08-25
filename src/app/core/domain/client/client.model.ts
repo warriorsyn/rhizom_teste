@@ -1,3 +1,6 @@
+import { CarBrandModel } from '../carbrand/carbrand.model';
+import { CarmodelModel } from '../carmodel/carmodel.model';
+
 export interface ClientModel {
   id: string;
   name: string;
@@ -5,6 +8,6 @@ export interface ClientModel {
   phone: string;
   birth: string;
   address: string;
-  brandId: string;
-  modelId: string;
+  brand: CarBrandModel;
+  model: CarmodelModel;
 }

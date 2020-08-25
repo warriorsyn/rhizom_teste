@@ -1,5 +1,10 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+} from '@angular/forms';
 import { v4 as uuid } from 'uuid';
 import { CpfValidator } from '../../shared/validators/cpf.validator';
 import { ClientMockEntity } from 'src/app/data/client/client-mock-repository/client-mock-entity';
@@ -29,6 +34,9 @@ export class ClientFormComponent implements OnInit {
   carBrands: CarBrandModel[] = [];
 
   carModels: CarmodelModel[] = [];
+
+  selectedBrand: CarBrandModel;
+  selectedModel: CarmodelModel;
 
   cepInvalid = false;
 
@@ -77,49 +85,61 @@ export class ClientFormComponent implements OnInit {
   }
 
   emitSubmit(data: ClientMockEntity) {
+    // Emit os dados do form para outros componentes
     if (this.clientForm.valid) {
+      // Envia apenas se estiver válido
       this.emitFormData.emit(data);
       return;
     }
   }
 
-  clientControl(name: string) {
+  clientControl(name: string): AbstractControl {
+    // Retorna um AbstractControl
     return this.clientForm.get(name);
   }
 
   clientControlIsInvalid(name: string) {
+    // Verifica se campo de input é invalido
     const control = this.clientControl(name);
     return control.invalid && (control.touched || control.dirty);
   }
 
   getCarBrands() {
+    // Popular array com marcas de carros
     return this.getAllCarbrandUsecase.execute(null).subscribe((brands) => {
       this.carBrands.push(brands);
     });
   }
 
-  getCarModels(idBrand: string) {
+  getCarModels() {
+    // Popular array com os modulos de carros
     this.carModels = [];
-    this.getCarmodelByCarbrandUsecase.execute(idBrand).subscribe((model) => {
-      this.carModels.push(model);
-    });
+    this.getCarmodelByCarbrandUsecase
+      .execute(this.clientControl('brand').value.id)
+      .subscribe((model) => {
+        this.carModels.push(model);
+      });
   }
 
   autocompleteByCep(cep: string) {
-    if (cep.length >= 9) {
-      this.getAddressByCepUsecase.execute(cep).subscribe(
-        (adrs) => {
-          this.cepInvalid = false;
-          this.clientControl('address').patchValue(
-            adrs.logradouro ? adrs.logradouro : adrs.localidade
-          );
-        },
-        () => {
-          this.cepInvalid = true;
-        }
-      );
-      return;
-    }
+    // Realiza autocomplete do endereço pelo cep
+    this.getAddressByCepUsecase.execute(cep).subscribe(
+      (adrs) => {
+        this.cepInvalid = false;
+        this.clientControl('address').patchValue(
+          adrs.logradouro ? adrs.logradouro : adrs.localidade
+        );
+      },
+      () => {
+        this.cepInvalid = true;
+      }
+    );
+    return;
+  }
+
+  compareById(itemOne: any, itemTwo: any) {
+    // Compara dois items para ser exibido como selected no input select
+    return itemOne && itemTwo && itemOne.id === itemTwo.id;
   }
 
   ngOnInit(): void {
@@ -137,8 +157,8 @@ export class ClientFormComponent implements OnInit {
     });
 
     if (this.client) {
-      this.getCarModels(this.client.brandId);
-      this.clientForm.setValue({
+      console.log(this.client);
+      this.clientForm.patchValue({
         id: this.client.id,
         name: this.client.name,
         cpf: this.client.cpf,
@@ -146,9 +166,11 @@ export class ClientFormComponent implements OnInit {
         birth: this.client.birth,
         cep: '',
         address: this.client.address,
-        brand: this.client.brandId,
-        model: this.client.modelId,
+        brand: this.client.brand,
+        model: this.client.model,
       });
+
+      this.getCarModels();
     }
   }
 }
