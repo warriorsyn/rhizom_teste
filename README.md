@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.
 
+## Clonar projeto
+
+para clonar o projeto basta digitar na linha de comando `git clone https://github.com/warriorsyn/rhizom_teste.git`
+
 ## Baixar dependências
 
 Para baixar as dependências do projeto escreva na linha de comando do projeto `npm install`.
