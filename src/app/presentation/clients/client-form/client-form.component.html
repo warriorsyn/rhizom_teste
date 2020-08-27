@@ -76,10 +76,10 @@
         </option>
       </select>
     </div>
-    <div style="opacity: 0;" class="input-container">
+    <div style="opacity: 0" class="input-container">
       <label for=""></label>
       <!-- <select></select> -->
-      <div style="width: 25vw;"></div>
+      <div style="width: 25vw"></div>
     </div>
   </div>
 
@@ -101,6 +101,13 @@
     [type]="'warning'"
     *ngIf="cepInvalid"
     [message]="'Insira um CEP válido!'"
+    class="warning"
+  ></app-feedback>
+
+  <app-feedback
+    [type]="'warning'"
+    *ngIf="this.clientControlIsInvalid('birth')"
+    [message]="'Insira uma data válida!'"
     class="warning"
   ></app-feedback>
   <button [hidden]="true" type="submit"></button>

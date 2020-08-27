@@ -14,6 +14,7 @@ import { GetCarmodelByCarbrandUsecase } from 'src/app/core/usecases/carmodel/get
 import { CarmodelModel } from 'src/app/core/domain/carmodel/carmodel.model';
 import { GetAddressByCepUsecase } from 'src/app/core/usecases/cep/get-address-by-cep.usecase';
 import { ClientModel } from 'src/app/core/domain/client/client.model';
+import { BirthValidator } from '../../shared/validators/birth.validator';
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
@@ -149,7 +150,7 @@ export class ClientFormComponent implements OnInit {
       name: ['', [Validators.required]],
       cpf: ['', [Validators.required, CpfValidator]],
       phone: ['', [Validators.required]],
-      birth: ['', [Validators.required]],
+      birth: ['', [Validators.required, BirthValidator]],
       cep: [''],
       address: ['', [Validators.required]],
       brand: [''],

@@ -4,7 +4,7 @@ import { PresentationComponent } from './presentation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/cliente', pathMatch: 'full' },
-  { path: '**', redirectTo: '/cliente', pathMatch: 'full' },
+
   {
     path: '',
     component: PresentationComponent,
@@ -16,6 +16,8 @@ const routes: Routes = [
       },
     ],
   },
+
+  { path: '**', redirectTo: '/cliente', pathMatch: 'full' },
 ];
 
 @NgModule({
