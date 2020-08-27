@@ -31,4 +31,8 @@ describe('ClientListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('should have clients', () => {
+  //   expect(component.clients.length).toEqual(1);
+  // });
 });
