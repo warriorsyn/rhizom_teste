@@ -22,7 +22,7 @@
             <th>Endereço</th>
             <th>Marca e Modelo do Veículo</th>
 
-            <th style="width: 10%; margin-right: 16px;" class="text-right">
+            <th style="width: 10%; margin-right: 16px" class="text-right">
               Ações
             </th>
           </tr>
@@ -51,8 +51,9 @@
 
             <td class="td-actions text-right">
               <a
+                id="update-client"
                 [routerLink]="[client.id, 'atualizar']"
-                style="cursor: pointer;"
+                style="cursor: pointer"
                 rel="tooltip"
                 title="Edit Profile"
                 class="btn btn-success btn-simple btn-xs"
@@ -60,11 +61,12 @@
                 <i class="fa fa-edit"></i>
               </a>
               <a
+                id="delete-client"
                 [swal]="deleteSwal"
-                style="cursor: pointer;"
+                style="cursor: pointer"
                 rel="tooltip"
                 title="Remove"
-                class="btn btn-danger btn-simple btn-xs"
+                class="btn btn-danger btn-simple btn-xs delete-btn"
               >
                 <i class="fas fa-trash-alt"></i>
               </a>
