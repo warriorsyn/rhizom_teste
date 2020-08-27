@@ -99,13 +99,6 @@
 
   <app-feedback
     [type]="'warning'"
-    *ngIf="cepInvalid"
-    [message]="'Insira um CEP válido!'"
-    class="warning"
-  ></app-feedback>
-
-  <app-feedback
-    [type]="'warning'"
     *ngIf="this.clientControlIsInvalid('birth')"
     [message]="'Insira uma data válida!'"
     class="warning"
