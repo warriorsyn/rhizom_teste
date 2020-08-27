@@ -2,9 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.
 
+## Baixar dependências
+
+Para baixar as dependências do projeto escreva na linha de comando do projeto `npm install`.
+
 ## Rodar o projeto
 
-Escreva `ng serve` na cli angular do projeto para iniciar o servidor. Navegue para `http://localhost:4200/` ou `http://localhost:4200/clientes`.
+Escreva `ng serve` na cli angular do projeto para iniciar o servidor. Navegue para `http://localhost:4200/` ou `http://localhost:4200/cliente`.
 
 ## Rodar testes unitários
 
